@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+    --left-color: rgba(87, 84, 236, 0.7);
+    --right-color: rgba(43, 43, 43, 0.8);
+    --white: #fff;
+    --dark: #333;
+    --left-color-hover: rgba(87, 84, 236, 1);
+    --right-color-hover: rgba(43, 43, 43, 1);
+    --left-width: 75%;
+    --right-width: 25%;
+    --speed: 1000ms;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto',sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    color: var(--white);
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+}
+
+.btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: var(--white);
+    border: var(--white) solid 1px;
+    font-size: 10px;
+    font-weight: bold;
+    width: 150px;
+    padding: 9px;
+    text-transform: uppercase;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.left {
+    left: 0;
+    background-image: url('mario.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.left .btn:hover {
+    background-color: var(--left-color-hover);
+    border-color: var(--left-color-hover);
+}
+
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-color);
+}
+
+.split.right {
+    right: 0;
+    background-image: url('sonic.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-color);
+}
+
+.split.right .btn:hover {
+    background-color: var(--right-color-hover);
+    border-color: var(--right-color-hover);
+}
+
+.split.right, .split.left, .split.left::before, .split.right::before {
+    transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left {
+    width: var(--left-width);
+}
+
+.hover-left .right {
+    width: var(--right-width);
+}
+
+.hover-right .left {
+    width: var(--right-width);
+}
+
+.hover-right .right {
+    width: var(--left-width);
+}
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+        top: 40%;
+    }
+}
